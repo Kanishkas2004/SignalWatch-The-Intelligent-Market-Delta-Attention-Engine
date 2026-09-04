@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">Nexus Pulse / SignalWatch Architecture</title>
+  <desc id="desc">System architecture: Browser SPA talks REST and WebSocket to FastAPI, which uses Intelligence Engine, Market Data Service, and SQLite.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#67e8f9"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1152" height="732" rx="18" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title -->
+  <rect x="48" y="48" width="1104" height="72" rx="12" fill="#020617" stroke="#164e63" stroke-width="1.5"/>
+  <rect x="48" y="48" width="8" height="72" rx="4" fill="url(#headerGrad)"/>
+  <text x="76" y="80" fill="#ecfeff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700">Nexus Pulse / SignalWatch  System Architecture</text>
+  <text x="76" y="104" fill="#94a3b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Intelligent Market Delta Attention Engine · single-process FastAPI + Vanilla SPA</text>
+
+  <!-- User -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="160" width="200" height="90" rx="14" fill="#12263a" stroke="#22d3ee" stroke-width="2"/>
+  </g>
+  <text x="180" y="198" text-anchor="middle" fill="#a5f3fc" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600">USER</text>
+  <text x="180" y="222" text-anchor="middle" fill="#f8fafc" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700">Investor / Evaluator</text>
+  <text x="180" y="244" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Browser</text>
+
+  <!-- Frontend box -->
+  <g filter="url(#shadow)">
+    <rect x="340" y="150" width="300" height="320" rx="16" fill="#0b1c2e" stroke="#38bdf8" stroke-width="2"/>
+  </g>
+  <rect x="340" y="150" width="300" height="44" rx="16" fill="#0e7490"/>
+  <rect x="340" y="178" width="300" height="16" fill="#0e7490"/>
+  <text x="490" y="178" text-anchor="middle" fill="#ecfeff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">FRONTEND SPA</text>
+  <text x="490" y="210" text-anchor="middle" fill="#67e8f9" font-family="Consolas, monospace" font-size="12">frontend/</text>
+
+  <rect x="360" y="230" width="260" height="42" rx="8" fill="#164e63" stroke="#22d3ee" stroke-width="1"/>
+  <text x="490" y="256" text-anchor="middle" fill="#f0f9ff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600">index.html + Tailwind</text>
+
+  <rect x="360" y="286" width="260" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="309" text-anchor="middle" fill="#e2e8f0" font-family="Consolas, monospace" font-size="12">js/app.js  UI &amp; state</text>
+
+  <rect x="360" y="330" width="260" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="353" text-anchor="middle" fill="#e2e8f0" font-family="Consolas, monospace" font-size="12">js/websocket.js  live ticks</text>
+
+  <rect x="360" y="374" width="260" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="397" text-anchor="middle" fill="#e2e8f0" font-family="Consolas, monospace" font-size="12">js/time_machine.js</text>
+
+  <rect x="360" y="418" width="260" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="441" text-anchor="middle" fill="#e2e8f0" font-family="Consolas, monospace" font-size="12">js/charts.js  visit benchmark</text>
+
+  <!-- Backend box -->
+  <g filter="url(#shadow)">
+    <rect x="720" y="150" width="420" height="430" rx="16" fill="#12101f" stroke="#818cf8" stroke-width="2"/>
+  </g>
+  <rect x="720" y="150" width="420" height="44" rx="16" fill="#4338ca"/>
+  <rect x="720" y="178" width="420" height="16" fill="#4338ca"/>
+  <text x="930" y="178" text-anchor="middle" fill="#eef2ff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">BACKEND  FastAPI + Uvicorn</text>
+  <text x="930" y="210" text-anchor="middle" fill="#c7d2fe" font-family="Consolas, monospace" font-size="12">backend/ · python run.py :8000</text>
+
+  <!-- main.py -->
+  <rect x="744" y="230" width="372" height="52" rx="10" fill="#312e81" stroke="#a5b4fc" stroke-width="1.5"/>
+  <text x="930" y="252" text-anchor="middle" fill="#e0e7ff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">main.py</text>
+  <text x="930" y="270" text-anchor="middle" fill="#c7d2fe" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">REST API · WebSocket /ws/live · Static mount · Lifespan</text>
+
+  <!-- Three core services -->
+  <rect x="744" y="304" width="172" height="100" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="830" y="332" text-anchor="middle" fill="#c4b5fd" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700">Intelligence</text>
+  <text x="830" y="350" text-anchor="middle" fill="#c4b5fd" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700">Engine</text>
+  <text x="830" y="372" text-anchor="middle" fill="#a5b4fc" font-family="Consolas, monospace" font-size="10">intelligence_engine.py</text>
+  <text x="830" y="390" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">5-dim score · digest</text>
+
+  <rect x="936" y="304" width="180" height="100" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="1026" y="332" text-anchor="middle" fill="#c4b5fd" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700">Market Data</text>
+  <text x="1026" y="350" text-anchor="middle" fill="#c4b5fd" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700">Service</text>
+  <text x="1026" y="372" text-anchor="middle" fill="#a5b4fc" font-family="Consolas, monospace" font-size="10">market_service.py</text>
+  <text x="1026" y="390" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">ticks · universe · RVOL</text>
+
+  <!-- Supporting -->
+  <rect x="744" y="424" width="172" height="70" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="830" y="452" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Pydantic Schemas</text>
+  <text x="830" y="472" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="11">models.py</text>
+
+  <rect x="936" y="424" width="180" height="70" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="1026" y="452" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Seed / Personas</text>
+  <text x="1026" y="472" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="11">seed_data.py</text>
+
+  <!-- SQLite -->
+  <g filter="url(#shadow)">
+    <ellipse cx="930" cy="545" rx="150" ry="42" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  </g>
+  <text x="930" y="540" text-anchor="middle" fill="#fde68a" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">SQLite · SQLAlchemy</text>
+  <text x="930" y="560" text-anchor="middle" fill="#fcd34d" font-family="Consolas, monospace" font-size="11">users · watchlists · visit snapshots</text>
+
+  <!-- Scoring strip -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="620" width="1040" height="100" rx="14" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+  </g>
+  <text x="100" y="650" fill="#f8fafc" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">Attention Urgency Pipeline (0100)</text>
+  <text x="100" y="672" fill="#94a3b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Visit ” · Volatility Z · RVOL · Technical Breaks · Catalyst / Sector Decoupling ’ PRIORITY / NOTEWORTHY / STEADY</text>
+
+  <rect x="100" y="688" width="130" height="18" rx="4" fill="#dc2626"/>
+  <text x="165" y="701" text-anchor="middle" fill="#fff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="700">PRIORITY e60</text>
+  <rect x="250" y="688" width="150" height="18" rx="4" fill="#d97706"/>
+  <text x="325" y="701" text-anchor="middle" fill="#fff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="700">NOTEWORTHY 3259</text>
+  <rect x="420" y="688" width="120" height="18" rx="4" fill="#059669"/>
+  <text x="480" y="701" text-anchor="middle" fill="#fff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="700">STEADY &lt;32</text>
+  <text x="980" y="702" text-anchor="end" fill="#64748b" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">See DESIGN.md · ARCHITECTURE.md</text>
+
+  <!-- Arrows: User -> Frontend -->
+  <line x1="280" y1="205" x2="336" y2="205" stroke="#67e8f9" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="308" y="196" text-anchor="middle" fill="#67e8f9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">UI</text>
+
+  <!-- Arrows: Frontend <-> Backend REST -->
+  <line x1="640" y1="250" x2="716" y2="250" stroke="#67e8f9" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="678" y="242" text-anchor="middle" fill="#a5f3fc" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="600">REST</text>
+
+  <!-- Arrows: Frontend <-> Backend WS -->
+  <line x1="640" y1="310" x2="716" y2="310" stroke="#22d3ee" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="678" y="302" text-anchor="middle" fill="#67e8f9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="600">WS</text>
+
+  <!-- main to services -->
+  <line x1="830" y1="282" x2="830" y2="300" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowMuted)"/>
+  <line x1="1026" y1="282" x2="1026" y2="300" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowMuted)"/>
+
+  <!-- main/services to DB -->
+  <line x1="930" y1="494" x2="930" y2="500" stroke="#fbbf24" stroke-width="1.8" marker-end="url(#arrowMuted)"/>
+  <path d="M 830 494 Q 830 510 850 520" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#arrowMuted)"/>
+  <path d="M 1026 494 Q 1026 510 1010 520" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#arrowMuted)"/>
+
+  <!-- Market ticks feedback note -->
+  <text x="1026" y="410" text-anchor="middle" fill="#818cf8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">broadcast ’ WS clients</text>
+</svg>

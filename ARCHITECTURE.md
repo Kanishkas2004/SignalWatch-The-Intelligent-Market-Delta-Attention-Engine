@@ -4,6 +4,16 @@ This document describes the runtime architecture, data model, request/tick flows
 
 ---
 
+## Architecture diagram
+
+![Nexus Pulse / SignalWatch System Architecture](./docs/architecture-diagram.svg)
+
+> Source file: [`docs/architecture-diagram.svg`](./docs/architecture-diagram.svg)
+
+**Deployment shape:** one Python process (`python run.py` → Uvicorn) serves API, WebSocket, and static frontend.
+
+---
+
 ## 1. System context
 
 ```mermaid
@@ -16,8 +26,6 @@ flowchart LR
   API --> DB[(SQLite<br/>nexus_pulse.db)]
   MDS -->|in-process ticks| API
 ```
-
-**Deployment shape:** one Python process (`python run.py` → Uvicorn) serves API, WebSocket, and static frontend.
 
 ---
 

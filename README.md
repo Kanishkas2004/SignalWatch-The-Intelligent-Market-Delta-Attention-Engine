@@ -62,19 +62,19 @@ A stock moving ±1% is not inherently meaningful. The engine computes a multi-di
 
 ## Architecture at a glance
 
-```text
-Browser (Vanilla ES6 SPA)
-    │  REST + WebSocket
-    ▼
-FastAPI (backend/main.py)
-    ├── Intelligence Engine  → Attention Score + Executive Digest
-    ├── Market Data Service  → Universe, ticks, sector benchmarks
-    ├── SQLite / SQLAlchemy  → Users, watchlists, visit snapshots
-    └── Static frontend      → / and /static/*
-```
+![Nexus Pulse / SignalWatch System Architecture](./docs/architecture-diagram.svg)
 
-Full system design, scoring math, data model, and diagrams:
+| Layer | Role |
+|---|---|
+| **Frontend SPA** | Vanilla ES6 + Tailwind — digest, ticker triage, Time Machine, charts |
+| **FastAPI Backend** | REST + WebSocket hub, static serving, app lifespan |
+| **Intelligence Engine** | 5-dimension Attention Score + executive digest |
+| **Market Data Service** | Universe, simulated ticks, sector benchmarks |
+| **SQLite** | Users, watchlists, visit snapshots (temporal context) |
 
+Full system design, scoring math, data model, and flow diagrams:
+
+- **[docs/architecture-diagram.svg](./docs/architecture-diagram.svg)** — system architecture diagram
 - **[DESIGN.md](./DESIGN.md)** — product design, UX decisions, scoring rationale
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** — component architecture, data flow, API surface, ER diagram
 
