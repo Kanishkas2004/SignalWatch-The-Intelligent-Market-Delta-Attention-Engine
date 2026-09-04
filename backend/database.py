@@ -1,5 +1,7 @@
 import datetime
 import json
+import os
+from pathlib import Path
 from sqlalchemy import (
     create_engine,
     Column,
@@ -13,7 +15,10 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
-DATABASE_URL = "sqlite:///./nexus_pulse.db"
+# Local: project-root DB. Vercel/serverless: writable /tmp.
+_db_dir = Path("/tmp") if os.environ.get("VERCEL") else Path(".")
+_db_path = _db_dir / "nexus_pulse.db"
+DATABASE_URL = f"sqlite:///{_db_path.as_posix()}"
 
 engine = create_engine(
     DATABASE_URL, connect_args={"check_same_thread": False}
